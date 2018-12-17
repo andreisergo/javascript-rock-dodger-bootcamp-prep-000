@@ -176,12 +176,13 @@ function moveDodgerRight() {
    * This function should move DODGER to the right
    * (mabye 4 pixels?). Use window.requestAnimationFrame()!
    */
-   window.cancelAnimationFrame(moveDodgerLeft)
+   
    var leftDodger = DODGER.style.left.replace('px','')
    var left = parseInt(leftDodger, 10)
    
    if (left < GAME_WIDTH - 40) {
      DODGER.style.left = `${left + 4}px`
+     window.cancelAnimationFrame(moveDodgerLeft)
      window.requestAnimationFrame(moveDodgerRight)
    }
 }
