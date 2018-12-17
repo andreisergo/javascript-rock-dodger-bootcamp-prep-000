@@ -150,7 +150,7 @@ function moveDodger(e) {
    } else if (e.which === RIGHT_ARROW) {
      e.stopPropagation()
      e.preventDefault()
-     window.requestAnimationFrame(moveDodgerLeft)
+     window.cancelAnimationFrame(moveDodgerLeft)
      moveDodgerRight()
    }
 }
@@ -167,6 +167,7 @@ function moveDodgerLeft() {
    
    if (left > 0) {
      DODGER.style.left = `${left - 4}px`
+     window.requestAnimationFrame(moveDodgerLeft)
    }
 }
 
@@ -182,7 +183,6 @@ function moveDodgerRight() {
    
    if (left < GAME_WIDTH - 40) {
      DODGER.style.left = `${left + 4}px`
-     window.cancelAnimationFrame(moveDodgerLeft)
      window.requestAnimationFrame(moveDodgerRight)
    }
 }
